@@ -1,0 +1,59 @@
+// inheritance  , vehicle->car->electric car
+#include<iostream>
+using namespace std;
+
+//level 1
+class Vehicle{
+private:
+string brand;
+int year;
+
+public:
+void display_vehicle(){cout<<"Brand: "<<brand<<" year of production: "<<year<<"\n";}
+//contructor
+Vehicle(string brand ="brand", int year=1900): brand{brand}, year{year} {}
+
+
+};
+
+//level 2
+
+class Car : public Vehicle{
+    private:
+    int doors;
+
+    public:
+    Car(string brand, int year, int doors): Vehicle(brand,year), doors(doors){}
+
+    void display_car(){cout<<"this car has: "<<doors<<"\n";}
+
+};
+
+//level 3
+
+class Electric_car : public Car{
+    private:
+    double battery_capacity;
+    
+
+    public:
+    Electric_car(string brand, int year, int doors, double battery): Car( brand,  year, doors), battery_capacity{battery}{}
+void display_Electric_car(){cout<<"the car has a battery capacity: "<<battery_capacity<<"\n";
+display_car();
+display_vehicle();
+}
+};
+
+int main(){
+//Vehicle v1("Honda", 2001);
+//v1.display_vehicle();
+
+//Car C1("honda",2001,4);
+//C1.display_car();
+
+Electric_car e1("tesla", 2018,5,10000);
+e1.display_Electric_car();
+
+
+
+}
